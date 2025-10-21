@@ -1,0 +1,13 @@
+name: Cypress run test
+
+on: [pull_request]
+
+jobs:
+  cypress:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cypress-io/github-action@v6
+        with:
+          name: report
+          path: cypress/reports/html/*.html
