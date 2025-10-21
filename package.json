@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "test": "cypress run",
+    "open": "cypress open"
+  },
+  "devDependencies": {
+    "cypress": "^12.7.0",
+    "cypress-mochawesome-reporter": "^4.0.2"
+  }
+}
