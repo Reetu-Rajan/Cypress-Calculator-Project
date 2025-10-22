@@ -52,6 +52,6 @@ jobs:
           aws-region: ${{ env.REGION }}
       - name: Upload reports to S3
         run: |
-          aws s3 cp cypress/reports s3://${{ env.BUCKET }}/reports/report-${{ github.run_number }}.zip
+          aws s3 cp report.zip s3://${{ env.BUCKET }}/reports/report-${{ github.run_number }}.zip
 
 
