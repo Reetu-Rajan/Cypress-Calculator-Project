@@ -42,6 +42,9 @@ jobs:
         with:
           name: cypress-report
           path: cypress/reports/
+      - name: Compress reports folder to zip
+        run: |
+          zip -r report.zip cypress/reports/
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -49,6 +52,6 @@ jobs:
           aws-region: ${{ env.REGION }}
       - name: Upload reports to S3
         run: |
-          aws s3 cp cypress/reports s3://${{ env.BUCKET }}/reports/report-${{ github.run_number }}
+          aws s3 cp cypress/reports s3://${{ env.BUCKET }}/reports/report-${{ github.run_number }}.zip
 
 
