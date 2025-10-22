@@ -11,10 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Insall dependencies
+        run: npm i
       - uses: cypress-io/github-action@v6
         with:
           name: run test
-          run: npm run test
+          command: npm run test
       - uses: actions/upload-artifact@v4
         with:
           name: report
