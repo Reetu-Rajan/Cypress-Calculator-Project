@@ -10,14 +10,16 @@ jobs:
   cypress:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - name: Insall dependencies
         run: npm i
-      - uses: cypress-io/github-action@v6
+      - name: Run Cypress Test
+        uses: cypress-io/github-action@v6
         with:
-          name: run test
           command: npm run test
-      - uses: actions/upload-artifact@v4
+      - name: Upload Cypress repository
+        uses: actions/upload-artifact@v4
         with:
-          name: report
+          name: cypress-report
           path: cypress/reports/
