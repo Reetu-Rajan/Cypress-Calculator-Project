@@ -10,13 +10,13 @@ It supports:
 7. Test completion email notifcation via AWS SNS
 
 # Prerequisites
-Node.js (latest)
-npm
-AWS Account
-Admin Access IAM user
-IAM role for Github as Web entity
-S3 Bucket
-SNS Topic with Email Subscription
+1. Node.js (latest)
+2. npm
+3. AWS Account
+4. Admin Access IAM user
+5. IAM role for Github as Web entity
+6. S3 Bucket
+7. SNS Topic with Email Subscription
 
 
 # Installations
