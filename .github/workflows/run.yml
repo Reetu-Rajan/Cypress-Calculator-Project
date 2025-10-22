@@ -59,6 +59,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: upload-to-s3
     steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.ACTION_ROLE }}
+          aws-region: ${{ env.REGION}}
       - name: Send test summary via Email
         run: |
           aws sns publish \
