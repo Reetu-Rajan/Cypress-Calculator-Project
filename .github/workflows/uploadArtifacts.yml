@@ -21,7 +21,7 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Download Cypress report
-        uses: actions/download-artifcat@v4
+        uses: actions/download-artifact@v4
         with:
           name: cypress-report
           path: cypress/reports/
