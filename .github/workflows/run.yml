@@ -10,6 +10,7 @@ env:
   ACTION_ROLE: ${{ secrets.ACTION_ROLE }}
   REGION: ${{ secrets.REGION }}
   BUCKET: ${{ secrets.BUCKET }}
+  SNS_EMAIL: ${{ secrets.SNS_EMAIL }}
 
 permissions:
   contents: read
@@ -53,5 +54,18 @@ jobs:
       - name: Upload reports to S3
         run: |
           aws s3 cp report.zip s3://${{ env.BUCKET }}/reports/report-${{ github.run_number }}.zip
+      - name: Send test summary via Email
+        run: |
+          aws sns publish \
+          --topic-arn ${{ env.SNS_EMAIL }} \
+          --message "Cypress Test Completed!
+          Report: s3://${{ env.BUCKET }}/reports/report-${{ github.run_number }}.zip
+          Status: Pass" \
+          --subject "Cypress Test Report - ${{ github.run_number }}" \
+          --region ${{ env.REGION }}
+
+ 
+
+
 
 
