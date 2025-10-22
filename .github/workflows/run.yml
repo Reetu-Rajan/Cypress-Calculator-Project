@@ -54,6 +54,11 @@ jobs:
       - name: Upload reports to S3
         run: |
           aws s3 cp report.zip s3://${{ env.BUCKET }}/reports/report-${{ github.run_number }}.zip
+
+  email-sns-notification:
+    runs-on: ubuntu-latest
+    needs: upload-to-s3
+    steps:
       - name: Send test summary via Email
         run: |
           aws sns publish \
